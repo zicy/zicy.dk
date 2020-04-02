@@ -1,0 +1,8 @@
+/*
+*   CSS overwrites
+*/
+
+/* Bootstrap v4 tooltip */
+.bs-tooltip-bottom {
+    margin-top: 8px !important;
+}
