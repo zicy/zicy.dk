@@ -23,6 +23,8 @@ a:hover { color: #FFFFFF; }
     overflow: hidden;
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     cursor: crosshair;
+    /* Let touch drags reach the canvas instead of panning the page */
+    touch-action: pinch-zoom;
 }
 
 .tz-canvas {
