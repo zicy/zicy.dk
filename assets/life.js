@@ -111,6 +111,11 @@
             if (dx * dx + dy * dy <= 5 && Math.random() < 0.55) { var i = idx(g[0] + dx, g[1] + dy); alive[i] = 1; age[i] = 1; }
         }
     }
+    // Some touch environments only deliver touch events during a drag, not pointermove.
+    function onTouchMove(e) {
+        e.preventDefault();
+        for (var t = 0; t < e.touches.length; t++) paint(e.touches[t]);
+    }
     function onDown(e) {
         var g = cellAt(e);
         glider(g[0], g[1]);
@@ -120,6 +125,7 @@
     resize();
     root.addEventListener('pointermove', paint);
     root.addEventListener('pointerdown', onDown);
+    root.addEventListener('touchmove', onTouchMove, { passive: false });
     if (typeof ResizeObserver !== 'undefined') new ResizeObserver(resize).observe(root);
     else window.addEventListener('resize', resize);
 
